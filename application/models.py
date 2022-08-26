@@ -6,13 +6,22 @@ from django.db import models
 # modal = class
 
 class Student(models.Model):
+    COUNTRIES = [  # choices = COUNTRIES
+        ("TR","Turkey"),
+        ("US", "America"),
+        ("DE", "Germany"),
+        ("FR", "France"),
+        ]
     first_name = models.CharField(max_length=30)
     last_name = models.CharField("soyadı",max_length=30)  # title will be "soyadı" not last_name if we use that parameter
     number = models.IntegerField()
     about = models.TextField(blank=True, null=True)
     avatar = models.ImageField(upload_to="media/",blank=True, null=True)  # to control image we should install pillow module
+    country = models.CharField(max_length=2, choices=COUNTRIES, default="US")
+    registered_date = models.DateTimeField(auto_now_add=True)  # when new object is created, DateTime information comes here
+    updated_date = models.DateTimeField(auto_now=True)  # when object is updated, DateTime information comes here
 
-    # after writing new columns to class, new columns should be added to database table
+    # after writing new columns to class, new columns should be added to database table  --> makemigrations, migrate
 
 
     def __str__(self):  # changing appearance of the objects in admin panel by using __str__ method
