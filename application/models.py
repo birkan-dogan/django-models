@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 
 # Create your models here.
@@ -8,6 +9,11 @@ class Student(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField("soyadı",max_length=30)  # title will be "soyadı" not last_name if we use that parameter
     number = models.IntegerField()
+    about = models.TextField(blank=True, null=True)
+    avatar = models.ImageField(upload_to="media/",blank=True, null=True)  # to control image we should install pillow module
+
+    # after writing new columns to class, new columns should be added to database table
+
 
     def __str__(self):  # changing appearance of the objects in admin panel by using __str__ method
         return f"{self.number} {self.first_name} {self.last_name}"
