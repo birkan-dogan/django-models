@@ -17,3 +17,28 @@ class Student(models.Model):
 
 # after creating modal, we should update database by using these codes --> python manage.py makemigrations && python manage.py migrate
 # also we need to introduce this modal to admin panel
+
+"""
+# using shell environment to write sql, open shell with this command --> python manage.py shell
+
+# firstly,  we need to introduce our modals to shell environment --> from application.models import Student
+
+# after that, the instances will be created from Student class  --> 1 = Student(first_name= "Victor", last_name = "Hugo", number = 5)
+
+# after creating instance, we should insert this instance to database table --> s1.save()
+
+# we have second way to create new objects and this way does both creating new objects and saving to database in one line --> Student.objects.create(first_name="hank", last_name="schrader",number=6)
+
+# to see all objects in database table (Student)  --> alls = Student.objects.all()  # this will return queryset
+
+# to get one object in database table (it will just return one record) --> g1 = Student.objects.get(number=1)  # if we don't know how many records have number = 1, we should use filter() method
+
+# f1 = Student.objects.filter(number = 1)
+
+# f3 = Student.objects.filter(first_name__startswith="H")  # Django uses the 2 underscores between first_name and startswith to seperate field names and operations or filters
+
+# f4 = Student.objects.filter(last_name__endswith = "c")
+
+# to have objects that don't match with the query  --> f2 = Student.objects.exclude(number = 1)
+
+"""
